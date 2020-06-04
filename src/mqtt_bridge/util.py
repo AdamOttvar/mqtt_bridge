@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 from importlib import import_module
@@ -21,11 +22,14 @@ def monkey_patch_message_conversion():
     def _to_primitive_inst(msg, rostype, roottype, stack):
         # Typecheck the msg
         msgtype = type(msg)
+        """
         if msgtype in primitive_types and rostype in type_map[msgtype.__name__]:
             return msg
         elif msgtype is str and rostype in type_map[msgtype.__name__]:
             return msg.decode("utf-8").encode("utf-8", "ignore")
         raise FieldTypeMismatchException(roottype, stack, rostype, msgtype)
+        """
+        return msg
     message_conversion._to_primitive_inst = _to_primitive_inst
 
 
