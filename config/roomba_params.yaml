@@ -1,0 +1,24 @@
+mqtt:
+  client:
+    protocol: 4      # MQTTv311
+  connection:
+    host: 192.168.1.4
+    port: 1883
+    keepalive: 60
+  account:
+    username: user
+    password: pass
+  private_path: device/001
+serializer: json:dumps
+deserializer: json:loads
+bridge:
+  # Roomba response. From ROS to MQTT
+  - factory: mqtt_bridge.bridge:RosToMqttBridge
+    msg_type: std_msgs.msg:String
+    topic_from: /homeassistant/roomba/response
+    topic_to: /homeassistant/roomba/response
+  # Roomba control. From MQTT to ROS
+  - factory: mqtt_bridge.bridge:MqttToRosBridge
+    msg_type: std_msgs.msg:String
+    topic_from: /homeassistant/roomba/control
+    topic_to: /homeassistant/roomba/control
