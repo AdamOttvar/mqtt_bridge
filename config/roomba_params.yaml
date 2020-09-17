@@ -19,6 +19,22 @@ bridge:
     topic_to: /homeassistant/roomba/response
   # Roomba control. From MQTT to ROS
   - factory: mqtt_bridge.bridge:MqttToRosBridge
-    msg_type: std_msgs.msg:String
-    topic_from: /homeassistant/roomba/control
-    topic_to: /homeassistant/roomba/control
+    msg_type: std_msgs.msg:Empty
+    topic_from: /homeassistant/roomba/wakeup
+    topic_to: /homeassistant/roomba/wakeup
+  - factory: mqtt_bridge.bridge:MqttToRosBridge
+    msg_type: std_msgs.msg:Empty
+    topic_from: /homeassistant/roomba/stop
+    topic_to: /homeassistant/roomba/stop
+  - factory: mqtt_bridge.bridge:MqttToRosBridge
+    msg_type: std_msgs.msg:Int16
+    topic_from: /homeassistant/roomba/rotate
+    topic_to: /homeassistant/roomba/rotate
+  - factory: mqtt_bridge.bridge:MqttToRosBridge
+    msg_type: std_msgs.msg:Int16
+    topic_from: /homeassistant/roomba/forward
+    topic_to: /homeassistant/roomba/forward
+  - factory: mqtt_bridge.bridge:MqttToRosBridge
+    msg_type: std_msgs.msg:Int16
+    topic_from: /homeassistant/roomba/backward
+    topic_to: /homeassistant/roomba/backward
