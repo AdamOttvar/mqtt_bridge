@@ -24,6 +24,10 @@ bridge:
     topic_to: /homeassistant/roomba/wakeup
   - factory: mqtt_bridge.bridge:MqttToRosBridge
     msg_type: std_msgs.msg:Empty
+    topic_from: /homeassistant/roomba/dock
+    topic_to: /homeassistant/roomba/dock
+  - factory: mqtt_bridge.bridge:MqttToRosBridge
+    msg_type: std_msgs.msg:Empty
     topic_from: /homeassistant/roomba/stop
     topic_to: /homeassistant/roomba/stop
   - factory: mqtt_bridge.bridge:MqttToRosBridge
